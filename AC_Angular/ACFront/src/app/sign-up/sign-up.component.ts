@@ -46,9 +46,9 @@ signin(){
   console.log(this.currentUser);
   
   this.service.createUser(this.currentUser).subscribe(data => {
-    err => console.log(alert("Username is taken"), err);
+    (err : any) => console.log(alert("Username is taken"), err);
     console.log(data)
-    alert(please sign in)
+    alert("please sign in")
     this.router.navigate([`/sign-in`]);
   });
 

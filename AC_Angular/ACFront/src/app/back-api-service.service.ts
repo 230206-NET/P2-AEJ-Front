@@ -14,9 +14,9 @@ import { Sellinfo } from './models/sellinfo';
 })
 export class BackApiServiceService {
 
-  apiRoot : string = 'http://localhost:5144';
-  apiRoot1 : string = 'http://localhost:5144/user-inventory/userId?userId=5';
-  apiRoot2 : string = 'http://localhost:5144/login';
+  apiRoot : string = 'https://apiback.azurewebsites.net/';
+  apiRoot1 : string = 'https://apiback.azurewebsites.net/user-inventory/userId?userId=5';
+  apiRoot2 : string = 'https://apiback.azurewebsites.net/login';
   username : string = "";
   constructor(private http: HttpClient) {   }
 
@@ -61,16 +61,16 @@ export class BackApiServiceService {
     sessionStorage.setItem('wallet', (wallet - sum).toString())
 
     // sessionStorage.setItem('wallet',  )
-    return this.http.post("http://localhost:5144/store/buy",misc) as Observable<any>;
+    return this.http.post("https://apiback.azurewebsites.net/store/buy",misc) as Observable<any>;
   }
 
   SellItem(sellinfo : Sellinfo) : Observable<any>{
-    let sum = parseInt(sessionStorage.getItem('totalprice')!)
-    let  wallet  =  parseInt(sessionStorage.getItem('wallet')!)
-    sessionStorage.setItem('wallet', (wallet).toString())
+    // let sum = parseInt(sessionStorage.getItem('totalprice')!)
+    // let  wallet  =  parseInt(sessionStorage.getItem('wallet')!)
+    // sessionStorage.setItem('wallet', (wallet).toString())
 
-    sessionStorage.setItem('wallet',  )
-    return this.http.post("http://localhost:5144/store/sell",sellinfo) as Observable<any>;
+    // sessionStorage.setItem('wallet', wallet )
+    return this.http.post("https://apiback.azurewebsites.net/store/sell",sellinfo) as Observable<any>;
 }
   BuyRand(by_id : number) {
     console.log('in buyrandom service')
@@ -79,7 +79,7 @@ export class BackApiServiceService {
     sessionStorage.setItem('wallet', (wallet - 200).toString())
 
     // sessionStorage.setItem('wallet',  )
-    return this.http.post("http://localhost:5144/grabbag", by_id, {responseType: "text"}) as Observable<string>
+    return this.http.post("https://apiback.azurewebsites.net/grabbag", by_id, {responseType: "text"}) as Observable<string>
 
   }
 

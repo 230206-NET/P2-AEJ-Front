@@ -8,7 +8,7 @@ import { User2 } from './models2/users2';
 })
 export class SignUpService {
 
-  root1  : string = 'http://localhost:5144/users/createAccount'
+  root1  : string = 'https://apiback.azurewebsites.net/users/createAccount'
 
   constructor(private http : HttpClient) { }
 
