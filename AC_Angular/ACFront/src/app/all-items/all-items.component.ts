@@ -9,7 +9,7 @@ import {itemforallitems} from '../models/item'
   templateUrl: './all-items.component.html',
   styleUrls: ['./all-items.component.css']
 })
-export class AllItemsComponent{
+export class AllItemsComponent implements OnChanges{
   constructor(private api: ACAPIServiceService, private Oapi : BackApiServiceService) {  }
   items : any [] = [];
   items1 : itemforallitems[] = [];
@@ -19,6 +19,15 @@ export class AllItemsComponent{
   }
    show : boolean = false;
    randitem : string = "";
+
+   ngOnChanges(){
+  
+    if(this.randitem !="")
+    this.show=true;
+
+   }
+
+
 
   buyrandom(){
       console.log('in buyrandom')

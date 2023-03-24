@@ -16,7 +16,6 @@ const routes: Routes = [
 {path: 'users-items/{id}',
  component : GetAUsersItemsComponent 
 },
-
 {path : '',component : SignInComponent},
 {path: 'user-home/', component : UserHomeComponent},
 {path: 'home-page',  component : HomePageComponent},
@@ -24,11 +23,11 @@ const routes: Routes = [
 {path : 'user-items', component : GetAUsersItemsComponent},
 {path: 'sign-up', component : SignUpComponent},
 {path: 'marketplace', component: GetMarketplaceItemsComponent },
+{path : 'user-profile/null', component : SignInComponent},
 {path: 'user-profile/:id', component: UserProfileComponent },
 {path: 'allitems', component : AllItemsComponent},
 {path: 'marketplace/buy', component: BuyItemComponent },
-{path: 'marketplace/sell', component: SellItemComponent }
-
+{path: 'marketplace/sell', component: SellItemComponent },
 ];
 
 @NgModule({

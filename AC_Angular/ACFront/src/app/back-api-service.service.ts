@@ -14,7 +14,7 @@ import { Sellinfo } from './models/sellinfo';
 })
 export class BackApiServiceService {
 
-  apiRoot : string = 'https://apiback.azurewebsites.net/';
+  apiRoot : string = 'http://localhost:5144';
   apiRoot1 : string = 'https://apiback.azurewebsites.net/user-inventory/userId?userId=5';
   apiRoot2 : string = 'https://apiback.azurewebsites.net/login';
   username : string = "";
@@ -78,8 +78,7 @@ export class BackApiServiceService {
     let  wallet  =  parseInt(sessionStorage.getItem('wallet')!)
     sessionStorage.setItem('wallet', (wallet - 200).toString())
 
-    // sessionStorage.setItem('wallet',  )
-    return this.http.post("https://apiback.azurewebsites.net/grabbag", by_id, {responseType: "text"}) as Observable<string>
+    return this.http.post("http://localhost:5144/grabbag", by_id, {responseType: "text"}) as Observable<string>
 
   }
 
