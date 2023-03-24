@@ -20,7 +20,7 @@
     width: 70%;
     position: fixed;
     z-index: 1;
-    top: 0;
+    top: 200;
     overflow-x: hidden;
     padding-top: 20px;
   }

@@ -1,52 +1,4 @@
-<!-- <head>
-    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.*/css/pico.min.css">
-    <link rel="stylesheet" href="get-a-users-items.component.css">
-</head>
-
 <body>
-<h1>Get User Items</h1>
-<form (submit)="processForm($event)" [formGroup]="getItemForm">
-    <label for="u-id">User ID<span class="required">*</span></label>
-    <input type="text" name="u-id" id="u-id" formControlName="userID">
-    <input type="submit" role="button" value="Show Items">
-</form>
-
-<h2 *ngIf="id != null">{{username}}'s items</h2>
-<table *ngIf="items.length > 0">
-    <thead>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Quantity</th>
-        <th>Photo</th>
-    </thead>
-    <tbody>
-        <tr *ngFor="let i of items">
-            <td>{{i.Id}}</td>
-            <td>{{i.Name}}</td>
-            <td>{{i.Balance}}</td>
-            <td><img src={{i.Url}} height="100" width="100"></td>
-        </tr>
-    </tbody>
-</table>
-<p *ngIf="items.length === 0 && clicked">
-    No items to display... :(
-</p>
-</body> -->
-
-
-<head>
-    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.*/css/pico.min.css">
-    <link rel="stylesheet" href="get-a-users-items.component.css">
-</head>
-
-<body>
-
-<!-- <form (search)="processForm($event)" [formGroup]="getItemForm">
-    <label for="name">Item Name<span class="required">*</span></label>
-    <input type="text" name="name" id="name" formControlName="userID">
-    <input type="submit" role="button" value="Search Item">
-</form> -->
-
 <table>
     <thead>
         <th>ID</th>
@@ -65,7 +17,7 @@
         </tr>
     </tbody>
 </table>
-<p *ngIf="items.length === 0">
+<!-- <p *ngIf="items.length === 0">
     No items to display... :(
-</p>
+</p> -->
 </body>

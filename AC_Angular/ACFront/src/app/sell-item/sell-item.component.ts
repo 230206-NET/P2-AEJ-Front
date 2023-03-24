@@ -15,10 +15,7 @@ export class SellItemComponent {
   sellID : number = parseInt(sessionStorage.getItem('sellID')!);
   sellName : string = sessionStorage.getItem('sellName')!;
   sellAvailable : number = parseInt(sessionStorage.getItem('sellAvailable')!);
-  // sellPrice : number = parseInt(sessionStorage.getItem('sellPrice')!);
   sellPhoto : string = sessionStorage.getItem('sellPhoto')!;
-  // wallet : number = parseInt(sessionStorage.getItem("wallet")!);
-  // buyer_id : number = parseInt(sessionStorage.getItem("id")!);
   seller_id : number = parseInt(sessionStorage.getItem('id')!);
   
   inputQuantity : number = 0;
@@ -55,9 +52,7 @@ export class SellItemComponent {
     this.sellinfo.quantity=this.inputQuantity;
     this.sellinfo.sellerId=this.seller_id;
     this.sellinfo.price=this.inputPrice;
-    console.log(this.sellinfo);
     this.api.SellItem(this.sellinfo).subscribe((data : any) => {
-      console.log(data);
     });
     this.router.navigate([`/user-profile/${this.sellinfo.sellerId}`]);
     

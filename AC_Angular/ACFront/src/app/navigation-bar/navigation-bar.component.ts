@@ -1,6 +1,7 @@
-import { Component, OnChanges } from '@angular/core';
+import { Component, OnChanges, SimpleChanges } from '@angular/core';
 import { BackApiServiceService } from '../back-api-service.service';
 import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
 import { Router,RouterLink, Navigation } from '@angular/router';
 
 @Component({
@@ -8,14 +9,20 @@ import { Router,RouterLink, Navigation } from '@angular/router';
   templateUrl: './navigation-bar.component.html',
   styleUrls: ['../../../node_modules/@picocss/pico/css/pico.classless.css']
 })
-export class NavigationBarComponent{
-constructor(private service : BackApiServiceService, private router : Router){}
 
+@Injectable({
+  providedIn: 'root'
+})
+export class NavigationBarComponent {
+constructor(public service : BackApiServiceService, private router : Router){}
 
-clicked(){
+login : boolean = true;
 
+clicked() {
   this.router.navigate([`/user-profile/${sessionStorage.getItem('username')}`]);
-
+}
 }
 
-}
+
+
+

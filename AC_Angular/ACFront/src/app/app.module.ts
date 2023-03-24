@@ -15,6 +15,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { BuyItemComponent } from './buy-item/buy-item.component';
 import { AllItemsComponent } from './all-items/all-items.component';
 import { SellItemComponent } from './sell-item/sell-item.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,14 +31,18 @@ import { SellItemComponent } from './sell-item/sell-item.component';
     AllItemsComponent,
     SellItemComponent
   ],
+  exports:[
+    NavigationBarComponent
+
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

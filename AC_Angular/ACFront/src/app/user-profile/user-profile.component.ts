@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { BackApiServiceService } from '../back-api-service.service';
 import { Router } from '@angular/router';
 import { UserItemsService } from '../user-items.service';
+import { NavigationBarComponent } from '../navigation-bar/navigation-bar.component';
 
 @Component({
   selector: 'app-user-profile',
@@ -10,10 +11,7 @@ import { UserItemsService } from '../user-items.service';
 })
 export class UserProfileComponent {
 
-  constructor(private service : UserItemsService, private api : BackApiServiceService, private router : Router) {
-    this.service.currentData.subscribe(value => {
-      this.items=value;
-    })
+  constructor(private nav:NavigationBarComponent,private service : UserItemsService, private api : BackApiServiceService, private router : Router) {
   }
   username : string  = sessionStorage.getItem("username")!;
   fname : string = sessionStorage.getItem("fname")!;
@@ -35,19 +33,13 @@ export class UserProfileComponent {
 }
 
   LogOut() {
+
     sessionStorage.clear();
     this.router.navigate([``]);
+    // this.api.getLoggedin(false);
+    // this.nav.call();
+    this.api.deauthenticate();
   }
-
-
-
-  // processForm(e: Event) {
-  //   this.clicked=true;
-  //   e.preventDefault();
-  //   this.api.getAllUserItems(this.userIdInt).subscribe(data => {
-  //     this.items=data as any;
-  //   });
-  // }
 
   SellItem(e: Event) {
  

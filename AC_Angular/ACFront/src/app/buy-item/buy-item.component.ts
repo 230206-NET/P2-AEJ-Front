@@ -22,7 +22,6 @@ export class BuyItemComponent {
   input : number = 0;
   totalSum : number = 0;
 
-  // input : string = (document.getElementById("selectquantity") as HTMLInputElement).value;
   Calculate(e : Event) {
     if ((document.getElementById("selectquantity") as HTMLInputElement).value!=null) {
       this.input = parseInt((document.getElementById("selectquantity") as HTMLInputElement).value);
@@ -40,7 +39,7 @@ export class BuyItemComponent {
     if (this.input>this.buyAvailable)
       s.value="";  
   }
- 
+
   item : Item = {
     id : 0,
     quantity : 0,
@@ -60,7 +59,6 @@ export class BuyItemComponent {
   this.misc.quantity=this.input;
   this.misc.buyerId=this.buyer_id;
   this.api.BuyItem(this.misc).subscribe((data : any) => {
-    console.log(data);
   });
   this.router.navigate([`/user-profile/${this.misc.buyerId}`]);
     

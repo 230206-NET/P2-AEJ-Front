@@ -15,4 +15,11 @@ export class UserItemsService {
     this.subject.next(newData);
   }
 
+  log() {
+    if(localStorage.getItem("loggedin")==="true")
+      return true;
+    else
+    return false;
+  }
+
 }

@@ -35,19 +35,13 @@ signin(){
   const uname = (document.getElementById("username")) as HTMLInputElement;
   const pwd = (document.getElementById("password")) as HTMLInputElement;
   this.currentUser.firstName = firstN.value;
-  console.log("signUp first name: " + firstN.value);
   this.currentUser.lastName = lastN.value;
-  console.log("signUp last name: " + lastN.value);
   this.currentUser.username = uname.value;
-  console.log("signUp username: " + uname.value);
   this.currentUser.password = pwd.value;
-  console.log("signUp password" + pwd.value);
   this.currentUser.wallet = 1000;
-  console.log(this.currentUser);
   
   this.service.createUser(this.currentUser).subscribe(data => {
     (err : any) => console.log(alert("Username is taken"), err);
-    console.log(data)
     alert("please sign in")
     this.router.navigate([`/sign-in`]);
   });

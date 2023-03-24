@@ -7,6 +7,7 @@ import {HttpParams} from "@angular/common/http";
 import { User } from './models/user';
 import { Misc } from './models/misc';
 import { Sellinfo } from './models/sellinfo';
+import { BehaviorSubject } from 'rxjs';
 
 
 @Injectable({
@@ -28,7 +29,9 @@ export class BackApiServiceService {
 
 
   getLogin(user : User) : Observable<boolean>{
-    return this.http.post(this.apiRoot+"/login", user) as Observable<boolean>}
+
+    return this.http.post(this.apiRoot+"/login", user) as Observable<boolean>
+  }
 
 
   getUserByID(id : number) {
@@ -59,21 +62,13 @@ export class BackApiServiceService {
     let sum = parseInt(sessionStorage.getItem('totalprice')!)
     let  wallet  =  parseInt(sessionStorage.getItem('wallet')!)
     sessionStorage.setItem('wallet', (wallet - sum).toString())
-
-    // sessionStorage.setItem('wallet',  )
     return this.http.post("https://apiback.azurewebsites.net/store/buy",misc) as Observable<any>;
   }
 
   SellItem(sellinfo : Sellinfo) : Observable<any>{
-    // let sum = parseInt(sessionStorage.getItem('totalprice')!)
-    // let  wallet  =  parseInt(sessionStorage.getItem('wallet')!)
-    // sessionStorage.setItem('wallet', (wallet).toString())
-
-    // sessionStorage.setItem('wallet', wallet )
     return this.http.post("https://apiback.azurewebsites.net/store/sell",sellinfo) as Observable<any>;
 }
   BuyRand(by_id : number) {
-    console.log('in buyrandom service')
     
     let  wallet  =  parseInt(sessionStorage.getItem('wallet')!)
     sessionStorage.setItem('wallet', (wallet - 200).toString())
@@ -82,11 +77,22 @@ export class BackApiServiceService {
 
   }
 
-  getLoggedin()
-  { 
+  current_state = sessionStorage.getItem("loggedin");
+
+  ParseBoolean(value : string | null) : boolean {
+    if (value==="true")
+      return true;
+    else
+      return false;
+  }
+
+  public $marketplace_toggle : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.ParseBoolean(this.current_state));
   
-    if ("true" === sessionStorage.getItem('loggedin') )
-    return true;
-    else return false;
+  public authenticate() {
+    this.$marketplace_toggle.next(true);
+  }
+  
+  public deauthenticate() {
+    this.$marketplace_toggle.next(false);
   }
 }

@@ -20,28 +20,59 @@ describe('BackApiServiceService', () => {
     });
 
     httpMock = TestBed.inject(HttpTestingController);
-    service = TestBed.inject(BackApiServiceService)
+    service = TestBed.inject(BackApiServiceService);
 
   });
+
+  let User = {
+    id : 2,
+    fname : "", 
+    lname: "",
+    username: "",
+    password: "",
+    wallet : 1000
+
+
+  }
 
 
   //individual tests
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
-  it('should get all items for a user', () =>{
-    service.getAllUserItems(1).subscribe((data)=>{
-      expect(data).toBeTruthy();
+  it('should get a user by id', () =>{
+    service.getLogin(User).subscribe(result =>{
+      expect(result).toBeTruthy();
+      expect(result.valueOf).toBeTruthy(); 
     });
-    
-    // const req = httpMock.expectOne('http://localhost:5144');
-    // expect(req.request.method).toBe('GET')
+     const req = httpMock.expectOne('http://localhost:5144/login');
+     expect(req.request.method).toBe('POST')
 
-    // req.flush([
-    //   {
-
-    //   }
-    // ]);
+     req.flush([
+       {
+        results : true,
+       }
+     ]);
 
   });
+
+  let username = 'ericuser';
+  it('should return a username', () =>{
+    service.getUserByUsername(username).subscribe((data : any) => {
+      expect(data).toBeTruthy();
+      expect(data.username).toBe('ericuser');
+    })
+
+     const req = httpMock.expectOne('http://localhost:5144/' + `user1?username=${username}`);
+     expect(req.request.method).toBe('GET')
+
+     req.flush({
+        username : "ericuser"
+     });
+
+
+  });
+
+
+  
 });

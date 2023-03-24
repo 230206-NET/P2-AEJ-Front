@@ -59,7 +59,7 @@
                     </tr>
                 </tbody>
             </table>
-            <p *ngIf="items.length === 0">
+            <p *ngIf="items === null"> <!-- this was changed for testing.-->
                 No items to display... :(
             </p>
         </div>

@@ -11,18 +11,13 @@ import { UserItemsService } from '../user-items.service';
 })
 export class GetMarketplaceItemsComponent implements OnInit {
 
-  constructor(private service: UserItemsService,private api: BackApiServiceService, private router : Router) {
-    this.service.currentData.subscribe(value => {
-      this.userItems=value;
-    })
-   }
+  constructor(private service: UserItemsService,private api: BackApiServiceService, private router : Router) {}
   items : any [] = [];
-  userItems: any[] = [];
+  // userItems: any[] = [];
   userId = sessionStorage.getItem("id")!;
   userIdInt : number = +this.userId;
   
   ngOnInit(): void {
-    console.log("dd");
     this.api.getMarketplaceItems().subscribe(data => {
       this.items=data as any;
   });
@@ -46,9 +41,9 @@ export class GetMarketplaceItemsComponent implements OnInit {
       sessionStorage.setItem('buyPhoto', clickedElement.parentElement?.parentElement?.querySelector("img")?.getAttribute('src')!);
 
       this.api.getAllUserItems(this.userIdInt).subscribe(data => {
-        this.userItems=data as any;
+        this.items=data as any;
       });
-      this.service.changeSubject(this.userItems);
+      this.service.changeSubject(this.items);
       this.router.navigate([`/marketplace/buy`]);
   }
 

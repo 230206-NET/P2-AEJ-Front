@@ -1,12 +1,14 @@
+Authenticated {{ service.$marketplace_toggle | async }}
+
 <div style="background-color: rgba(175, 250, 255, 0.281);">
     <nav>
         <ul>
             <li><a routerLink="/sign-in">Sign In</a></li>
             <li><a routerLink="/sign-up">Sign Up</a></li>
             <li><a routerLink="/home-page">Home</a></li>
-            <li><a routerLink="/marketplace">Marketplace</a></li>
+            <li *ngIf="(service.$marketplace_toggle | async) === true"><a routerLink="/marketplace">Marketplace</a></li>
             <li><a routerLink="/allitems">All Items</a></li>
-            <li><a style="cursor: pointer;" (click)="clicked()">UserProfile</a></li>
+            <li *ngIf="(service.$marketplace_toggle | async) === true"><a style="cursor: pointer;" (click)="clicked()">UserProfile</a></li>
             <!-- <li><a routerLink="/user-items">User-Items</a></li> -->
             <!-- <li><a routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">Sign-In Component</a></li>
             <li><a routerLink="/user-items" routerLinkActive="active" ariaCurrentWhenActive="page">Get User Items Component</a></li> -->
