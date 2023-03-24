@@ -15,7 +15,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class BackApiServiceService {
 
-  apiRoot : string = 'http://localhost:5144';
+  apiRoot : string = 'https://apiback.azurewebsites.net';
   apiRoot1 : string = 'https://apiback.azurewebsites.net/user-inventory/userId?userId=5';
   apiRoot2 : string = 'https://apiback.azurewebsites.net/login';
   username : string = "";
@@ -73,7 +73,7 @@ export class BackApiServiceService {
     let  wallet  =  parseInt(sessionStorage.getItem('wallet')!)
     sessionStorage.setItem('wallet', (wallet - 200).toString())
 
-    return this.http.post("http://localhost:5144/grabbag", by_id, {responseType: "text"}) as Observable<string>
+    return this.http.post( this.apiRoot + "/grabbag", by_id, {responseType: "text"}) as Observable<string>
 
   }
 

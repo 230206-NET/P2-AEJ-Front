@@ -10,14 +10,9 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent implements OnInit {
+export class AppComponent {
   title : string = 'ACFront';
   constructor(private router: Router, private n : NavigationBarComponent) { }
-@NgModule({
-  declarations: [
-    NavigationBarComponent
-  ]
+// @NgModule({  declarations: [ NavigationBarComponent ]});
 
-
-})
-
+}

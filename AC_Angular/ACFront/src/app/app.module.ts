@@ -4,10 +4,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormGroup } from '@angular/forms';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { GetAUsersItemsComponent } from './get-a-users-items/get-a-users-items.component';
-import { UserHomeComponent } from './user-home/user-home.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { GetMarketplaceItemsComponent } from './get-marketplace-items/get-marketplace-items.component';
@@ -22,7 +21,6 @@ import { SellItemComponent } from './sell-item/sell-item.component';
     SignUpComponent,
     SignInComponent,
     GetAUsersItemsComponent,
-    UserHomeComponent,
     HomePageComponent,
     NavigationBarComponent,
     GetMarketplaceItemsComponent,
@@ -40,7 +38,7 @@ import { SellItemComponent } from './sell-item/sell-item.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]
