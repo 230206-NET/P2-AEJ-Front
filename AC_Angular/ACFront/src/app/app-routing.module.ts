@@ -26,6 +26,7 @@ const routes: Routes = [
 {path: 'allitems', component : AllItemsComponent},
 {path: 'marketplace/buy', component: BuyItemComponent },
 {path: 'marketplace/sell', component: SellItemComponent },
+(path : '**', component : HomePageComponent},
 ];
 
 @NgModule({
